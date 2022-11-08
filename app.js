@@ -39,7 +39,7 @@ let URL = "https://us21.api.mailchimp.com/3.0/lists/370e18b04a";
 
 const options = {
   method: "POST",
-  auth: API.apiKey || process.env.API,
+  auth: API.apiKey() || process.env.API,
 };
 
 const request = https.request(URL, options, (response) => {
