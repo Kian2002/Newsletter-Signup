@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
 const app = express();
-const API = require("/config.js");
+const API = require(__dirname + "/config.js");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
@@ -39,7 +39,7 @@ let URL = "https://us21.api.mailchimp.com/3.0/lists/370e18b04a";
 
 const options = {
   method: "POST",
-  auth: API,
+  auth: API.apiKey || process.env.API,
 };
 
 const request = https.request(URL, options, (response) => {
